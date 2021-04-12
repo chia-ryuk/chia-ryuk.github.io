@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Chuck Norris Jokes Website</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="category-container">
+            <h1 class="heading">Chuck Norries</h1>
+            <div id="joke-categories" class="category">
+                <input class="btn" type="button" value="Input Button">
+                <input class="btn" type="button" value="Input Button">
+                <input class="btn" type="button" value="Input Button">
+                <input class="btn" type="button" value="Input Button">
+                <input class="btn" type="button" value="Input Button">
+                <input class="btn" type="button" value="Input Button">
+                <input class="btn" type="button" value="Input Button">
+                <input class="btn" type="button" value="Input Button">
+                <input class="btn" type="button" value="Input Button">
+                <input class="btn" type="button" value="Input Button">
+            </div>
+        </div>
+        <div class="joke-container">
+            <p>Selected-Category : <span id="selected-category"></p>
+            <div id="joke-div" class="joke-div">
+                <p id="joke">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet commodi pariatur ut.</p>
+            </div>
+            <button onclick="loadJoke()" class="btn new-joke">New Joke</button>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    var lastCategory = 'food'
+
+    var fetchPromise = fetch('https://api.chucknorris.io/jokes/categories')
+    fetchPromise.then(res => {
+        return res.json()
+    })
+        .then(jokeCategories => {
+            var jokeCategoryBtnHtml = ""
+            console.log(jokeCategories)
+            for (i = 0; i < jokeCategories.length; i++) {
+                jokeCategoryBtnHtml = jokeCategoryBtnHtml + '<input class="btn" type="button" onclick="clickFunction(this)" value=' + jokeCategories[i] + '>'
+                document.getElementById('joke-categories').innerHTML = jokeCategoryBtnHtml
+            }
+            loadJoke()
+        })
+
+    // It gets the value of joke category selected by the user and updates last category.
+    function clickFunction(abc) {
+        console.log(abc.value)
+        lastCategory = abc.value
+        loadJoke()
+    }
+    // It gets a joke from the selected category using categories API. It needs the value of category clicked on by user and adds that to the fetch api to get the jokes.
+    function loadJoke() {
+        var otherPromise = fetch('https://api.chucknorris.io/jokes/random?category=' + lastCategory)
+        otherPromise.then(response => {
+            return response.json()
+        })
+
+            .then(categoryJoke => {
+                console.log(categoryJoke.value)
+                document.getElementById('joke').innerHTML = categoryJoke.value
+                document.getElementById('selected-category').innerHTML = lastCategory
+
+            })
+    }
+
+</script>
+
+</html>
