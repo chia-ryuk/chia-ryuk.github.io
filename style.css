@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    padding: 1rem;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.heading{
+    padding-bottom: 0.5rem;
+}
+
+.category{
+    background-color: gray;
+}
+
+.btn{
+    width: 100px;
+    height: 50px;
+    font-size: 1rem;
+    border-radius: 7px;
+    border: none;
+    margin: 0.5rem;
+}
