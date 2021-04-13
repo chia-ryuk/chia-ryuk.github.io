@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
     <title>Chuck Norris Jokes Website</title>
 </head>
 
@@ -17,21 +20,14 @@
                 <input class="btn" type="button" value="Input Button">
                 <input class="btn" type="button" value="Input Button">
                 <input class="btn" type="button" value="Input Button">
-                <input class="btn" type="button" value="Input Button">
-                <input class="btn" type="button" value="Input Button">
-                <input class="btn" type="button" value="Input Button">
-                <input class="btn" type="button" value="Input Button">
-                <input class="btn" type="button" value="Input Button">
-                <input class="btn" type="button" value="Input Button">
-                <input class="btn" type="button" value="Input Button">
             </div>
         </div>
         <div class="joke-container">
-            <p>Selected-Category : <span id="selected-category"></p>
+            <p class="category-name">Selected-Category : <span id="selected-category"></p>
             <div id="joke-div" class="joke-div">
                 <p id="joke">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet commodi pariatur ut.</p>
             </div>
-            <button onclick="loadJoke()" class="btn new-joke">New Joke</button>
+            <button onclick="loadJoke()" class="new-joke">New Joke</button>
         </div>
     </div>
 </body>
@@ -54,7 +50,7 @@
             loadJoke()
         })
 
-    // It gets the value of joke category selected by the user and updates last category.
+    // It gets the value of joke category selected by the user and updates last selected category.
     function clickFunction(abc) {
         console.log(abc.value)
         lastCategory = abc.value
